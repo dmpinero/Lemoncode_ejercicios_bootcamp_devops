@@ -1,0 +1,40 @@
+services:
+  some-mongo:
+    container_name: some-mongo
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root 
+      - MONGO_INITDB_ROOT_PASSWORD=lemoncode
+    networks:
+      - lemoncode-challenge
+    volumes:
+      - datosmongo:/data/db
+
+  topics-api:
+    build: backend/.
+    container_name: topics-api
+    image: backend-node
+    environment:
+      - DATABASE_URL=mongodb://root:lemoncode@some-mongo:27017
+      - MONGO_INITDB_ROOT_PASSWORD=lemoncode
+    networks:
+      - lemoncode-challenge
+
+  frontend-node-challenge:
+    build: frontend/.
+    container_name: front-end-node-challenge
+    networks:
+      - lemoncode-challenge
+    environment:
+      - API_URI=http://topics-api:5000/api/topics
+    ports:
+      - 8080:3000
+      
+networks:
+  lemoncode-challenge:
+    name: lemoncode-challenge
+    driver: bridge
+
+volumes:
+    datosmongo:
+      name: datosmongo
