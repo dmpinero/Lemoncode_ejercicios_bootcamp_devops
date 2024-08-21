@@ -1,4 +1,4 @@
-# Laboratorio Módulo 3 - Orquestación
+# Laboratorio Módulo 2 - Orquestación
 ## Ejercicio 1
 
 ### Monolito en memoria
