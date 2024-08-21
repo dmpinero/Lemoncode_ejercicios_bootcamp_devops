@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app
+spec:
+  selector:
+    matchLabels:
+      app: todo-app
+  template:
+    metadata:
+      labels:
+        app: todo-app
+    spec:
+      containers:
+      - name: todo-app
+        image: dmpinero/todo-app-monolith-in-mem
+        env:
+          - name: NODE_ENV
+            value: "development"
+          - name: PORT
+            value: "3000"

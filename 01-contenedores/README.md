@@ -1,4 +1,4 @@
-# Laboratorio Contenedores Docker
+# Laboratorio Módulo 2 - Contenedores
 ## Ejercicio 1
 ### Dockeriza la aplicación dentro de lemoncode-challenge, la cual está compuesta de 3 partes:
 
