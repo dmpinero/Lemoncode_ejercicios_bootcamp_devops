@@ -50,7 +50,6 @@ docker push dmpinero/todo-app-monolith-in-mem
 ![monolith in memory](./images/Paso1/subida_imagen_docker.png)
 
 Comprobar que la imagen se ha subido al espacio del usuario de la cuenta de Docker
-imagen_en_repositorio_docker_hub.png
 ![monolith in memory](./images/Paso1/imagen_en_repositorio_docker_hub.png)
 
 Crear carpeta manifests para incluir los archivos .yaml

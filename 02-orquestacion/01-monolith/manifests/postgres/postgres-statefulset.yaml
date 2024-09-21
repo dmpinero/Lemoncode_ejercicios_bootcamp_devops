@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-statefulset
+spec:  
+  selector:
+    matchLabels:
+      app: todo-app-postgres     
+  serviceName: postgres-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: todo-app-postgres
+    spec:
+      containers:
+      - name: todo-app-postgres
+        image: dmpinero/todo-app-postgres
+        envFrom:
+        - configMapRef:
+            name: postgres-configmap
+        ports:
+        - containerPort: 5432
+          name: postgres        
+        volumeMounts:
+        - name: disk
+          mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+      volumes:
+        - name: disk
+          persistentVolumeClaim:
+            claimName: postgres-persistentvolumeclaim
