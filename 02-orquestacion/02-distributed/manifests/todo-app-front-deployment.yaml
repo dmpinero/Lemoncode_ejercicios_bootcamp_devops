@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app-front-deployment
+spec:
+  selector:
+    matchLabels:
+      app: todo-app-front
+  template:
+    metadata:
+      labels:
+        app: todo-app-front
+    spec:
+      containers:
+      - name: todo-app-front
+        image: dmpinero/todo-front-distributed:v2
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
