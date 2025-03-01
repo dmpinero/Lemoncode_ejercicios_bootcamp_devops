@@ -1,0 +1,34 @@
+name: Hangman Frontend CI
+
+on:
+  pull_request:
+    paths: ["hangman-front/**"] # Solo se ejecuta cuando hay cambios en esta carpeta
+    types: [opened, synchronize, reopened] # Se ejecuta al abrir, actualizar o reabrir PRs
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./hangman-front # Establece el directorio de trabajo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Clona el repositorio
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3 # Configura Node.js
+        with:
+          node-version: '18'
+          cache: 'npm' # Habilita el caché de npm
+          cache-dependency-path: './hangman-front/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci # Instala dependencias de forma limpia
+
+      - name: Build project
+        run: npm run build # Ejecuta el build
+
+      - name: Run unit tests
+        run: npm test # Ejecuta los tests
