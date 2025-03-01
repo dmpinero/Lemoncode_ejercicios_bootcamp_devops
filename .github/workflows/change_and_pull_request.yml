@@ -2,7 +2,8 @@ name: Hangman Frontend CI
 
 on:
   pull_request:
-    paths: ["hangman-front/**"] # Solo se ejecuta cuando hay cambios en esta carpeta
+    paths:
+      - 03-ci-cd/ejercicios_github_action/hangman-front/** # Solo se ejecuta cuando hay cambios en esta carpeta
     types: [opened, synchronize, reopened] # Se ejecuta al abrir, actualizar o reabrir PRs
 
 jobs:
