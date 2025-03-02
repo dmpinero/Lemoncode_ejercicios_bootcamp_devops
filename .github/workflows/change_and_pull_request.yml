@@ -3,7 +3,7 @@ name: Hangman Frontend CI
 on:
   pull_request:
     paths:
-      - 03-ci-cd/ejercicios_github_action/hangman-front/** # Solo se ejecuta cuando hay cambios en esta carpeta
+      - ../03-ci-cd/ejercicios_github_action/hangman-front/**' # Solo se ejecuta cuando hay cambios en esta carpeta
     types: [opened, synchronize, reopened] # Se ejecuta al abrir, actualizar o reabrir PRs
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./hangman-front # Establece el directorio de trabajo
+        working-directory: ../03-ci-cd/ejercicios_github_action/hangman-front # Establece el directorio de trabajo
 
     steps:
       - name: Checkout repository
